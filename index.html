@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Riya 🎉</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #ff9a9e, #fad0c4, #fbc2eb);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .heart {
+      position: fixed;
+      width: 18px;
+      height: 18px;
+      background: rgba(255, 255, 255, 0.9);
+      transform: rotate(45deg);
+      animation: floatHeart 8s linear infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: inherit;
+    }
+    .heart::before { left: -9px; top: 0; }
+    .heart::after  { top: -9px; left: 0; }
+
+    @keyframes floatHeart {
+      0% { transform: translateY(0) rotate(45deg) scale(0.8); opacity: 0; }
+      10% { opacity: 1; }
+      100% { transform: translateY(-110vh) rotate(45deg) scale(1.3); opacity: 0; }
+    }
+
+    .card {
+      position: relative;
+      z-index: 1;
+      max-width: 480px;
+      width: 92%;
+      padding: 24px 22px 22px;
+      border-radius: 26px;
+      background: rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      box-shadow: 0 24px 55px rgba(0, 0, 0, 0.28);
+      color: #2b2b2b;
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.9);
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+
+    .title {
+      font-size: 26px;
+      font-weight: 800;
+      margin-bottom: 4px;
+      background: linear-gradient(90deg, #ff4b8b, #ffb347, #ff4b8b);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      animation: gradientMove 4s ease-in-out infinite;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .subtitle {
+      font-size: 13px;
+      opacity: 0.85;
+      margin-bottom: 14px;
+    }
+
+    .hero-photo {
+      margin-bottom: 14px;
+    }
+    .hero-photo img {
+      width: 100%;
+      max-height: 230px;
+      object-fit: cover;
+      border-radius: 22px;
+      border: 3px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 16px 35px rgba(0, 0, 0, 0.35);
+    }
+
+    .message-box {
+      background: rgba(255, 255, 255, 0.97);
+      border-radius: 18px;
+      padding: 16px 14px 14px;
+      text-align: left;
+      font-size: 14px;
+      line-height: 1.55;
+      min-height: 130px;
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.15);
+      margin-bottom: 12px;
+    }
+
+    .message-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      opacity: 0.6;
+      margin-bottom: 6px;
+    }
+
+    #typed-message {
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 7px;
+      margin-left: 2px;
+      animation: blink 0.9s infinite;
+    }
+    @keyframes blink {
+      0%, 49% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+
+    .memory-section {
+      margin-top: 10px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 18px;
+      padding: 10px 10px 12px;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+      display: none;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .memory-title {
+      font-size: 12px;
+      text-transform: uppercase;
+      opacity: 0.7;
+    }
+
+    .slideshow {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      border-radius: 16px;
+      height: 210px;
+    }
+
+    .slideshow img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+    }
+
+    .slideshow img.active {
+      opacity: 1;
+    }
+
+    .button-row {
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      border: none;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: 13px;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s;
+    }
+
+    .btn-main {
+      background: linear-gradient(135deg, #ff4b8b, #ffb347);
+      color: white;
+      box-shadow: 0 8px 18px rgba(255, 75, 139, 0.45);
+    }
+    .btn-main:hover {
+      transform: translateY(-1px) scale(1.03);
+      box-shadow: 0 10px 22px rgba(255, 75, 139, 0.6);
+    }
+
+    .btn-ghost {
+      background: rgba(255, 255, 255, 0.9);
+      color: #ff4b8b;
+      border: 1px solid rgba(255, 255, 255, 0.95);
+    }
+    .btn-ghost:hover {
+      transform: translateY(-1px);
+    }
+
+    .footer-note {
+      margin-top: 10px;
+      font-size: 11px;
+      opacity: 0.7;
+    }
+
+    .popup-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 5;
+    }
+
+    .popup {
+      background: white;
+      border-radius: 22px;
+      padding: 20px 18px 16px;
+      max-width: 340px;
+      width: 88%;
+      text-align: center;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+      animation: popIn 0.35s ease-out;
+    }
+
+    @keyframes popIn {
+      from { transform: scale(0.7); opacity: 0; }
+      to   { transform: scale(1); opacity: 1; }
+    }
+
+    .popup h2 {
+      font-size: 20px;
+      margin-bottom: 6px;
+    }
+
+    .popup p {
+      font-size: 13px;
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <audio id="bg-music" src="audioooo.mp3" autoplay loop></audio>
+
+  <div class="card">
+    <div class="badge">
+      <span>🎂</span>
+      <div>For my favourite drama queen</div>
+    </div>
+
+    <h1 class="title">Happy Birthday, Riya! 🎉</h1>
+    <p class="subtitle">Full Bollywood entry, just for you. 💗</p>
+
+    <div class="hero-photo">
+      <img src="riya-main.jpg" alt="Riya main photo">
+    </div>
+
+    <div class="message-box">
+      <div class="message-label">A special message just for you 💌</div>
+      <div id="typed-message"></div>
+      <span class="cursor">|</span>
+    </div>
+
+    <div class="memory-section" id="memorySection">
+      <div class="memory-title">Memories that make you impossible to forget 🎞️</div>
+      <div class="slideshow">
+        <img id="slide1" src="riya-1.jpg" class="active">
+        <img id="slide2" src="riya-2.jpg">
+        <img id="slide3" src="riya-3.jpg">
+      </div>
+    </div>
+
+    <div class="button-row">
+      <button class="btn-main" id="memoriesBtn">Play the memories ✨</button>
+      <button class="btn-ghost" id="hugBtn">Virtual hug 🤍</button>
+    </div>
+
+    <div class="footer-note">
+      Built with a little bit of code and a lot of 
+      <span>you + me madness</span> 💫
+    </div>
+  </div>
+
+  <div class="popup-backdrop" id="popupBackdrop">
+    <div class="popup">
+      <h2>One last thing 💖</h2>
+      <p>
+        I don’t know how a single picture can look<br>
+        so calm, so aesthetic, and so beautiful…<br>
+        but somehow you pulled it off effortlessly. 🥹✨
+      </p>
+      <button class="btn-main" id="closePopup">Okay, fine 😌💗</button>
+    </div>
+  </div>
+
+  <script>
+    const mainMessage = `Dear Riya, Happy Birthday us insan ko jo mujhe tab bhi hasa deti hai jab main poore dil se decide kar leta hoon ki 'aaj toh main serious rahunga' 😭😂 — jis din se hum ek-dusre ko jaante hain, us din se tumne meri life mein itni khushi, itna maza, itna chaos aur itna entertainment daal diya hai ki sach bolun toh ek bhi din bore hone ka mauka hi nahi mila. Agar mujhe pata hota ki tumse milne ke baad meri life itni entertaining ho jaayegi, toh chalna–phirna seekhte hi main tumhe dhundhne nikal padta 😌🔥. Aur haan, tumhara ex mera dost hai, lekin reality ye hai ki uske haath mein ekdam festival tha aur usne use low-battery torch samajh liya 😭🔥. Uske dimaag ki loading mere purane phone se bhi zyada slow thi — matlab kaun aisi fun, crazy, sweet aur entertaining ladki ko lose kar deta hai? Ye toh uski life ka biggest L hai, aur woh uska poora haq banta hai 😂. Idhar tum ho, jo mujhe roz aise tease karti ho jaise ye tumhari full-time naukri ho, attitude aur sarcasm aise phenkti ho jaise tumhe hourly payment milti ho, aur main yahan zero-salary wala employee ban kar sab jhel raha hoon 😩💀😂. Par saari bakchodi, mazaak aur roasting ke beech, dil se chahta hoon ki ye saal tumhe woh khushiyan de jo ruk jaayein, woh log de jo beech raste mein chhod ke na bhaag jaayein, aur woh moments de jo tumhe feel karayein ki tum genuinely important ho, valued ho, aur kisi ki life ka best part ho. Tum deserve karti ho koi aisa jo sunta ho, samajhta ho, jo tumhe kabhi bhi kam feel na karaye — koi jo tumhari duniya ko heavy nahi, light banaye. Aur haan, hamare saare chaos aur teasing ke beech ek baat yaad rakhna… tum bina effort ke bhi kisi ki life bright bana sakti ho. Aur agar tumne kabhi mere bina cake khaya… toh main complaint likh kar, tumhare ghar pahunch kar, poora cake utha ke le aaunga — full confidence ke saath. 🎂😤😂💗`;
+
+    const typedEl = document.getElementById("typed-message");
+    const cursorEl = document.querySelector(".cursor");
+    let i = 0;
+
+    function typeLetter() {
+      if (i < mainMessage.length) {
+        typedEl.textContent += mainMessage.charAt(i);
+        i++;
+        setTimeout(typeLetter, 30);
+      } else {
+        cursorEl.style.display = "none";
+      }
+    }
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      const size = Math.random() * 14 + 10;
+      heart.style.width = size + "px";
+      heart.style.height = size + "px";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.bottom = "-40px";
+      heart.style.background = ["#ff4b8b", "#ffb347", "#ffffff", "#fbc2eb"][Math.floor(Math.random() * 4)];
+      heart.style.animationDuration = 6 + Math.random() * 4 + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 11000);
+    }
+
+    function startHearts() {
+      setInterval(createHeart, 700);
+    }
+
+    const music = document.getElementById("bg-music");
+
+    window.addEventListener("load", () => {
+      typeLetter();
+      startHearts();
+      if (music) {
+        music.volume = 0.6;
+        music.play().catch(() => {});
+      }
+    });
+
+    const memorySection = document.getElementById("memorySection");
+    const slides = [
+      document.getElementById("slide1"),
+      document.getElementById("slide2"),
+      document.getElementById("slide3")
+    ];
+    let currentSlide = 0;
+    let slideInterval = null;
+
+    function startSlideshow() {
+      if (slideInterval) return;
+      slideInterval = setInterval(() => {
+        slides[currentSlide].classList.remove("active");
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add("active");
+      }, 2000);
+    }
+
+    const memoriesBtn = document.getElementById("memoriesBtn");
+    const hugBtn = document.getElementById("hugBtn");
+    const popupBackdrop = document.getElementById("popupBackdrop");
+    const closePopup = document.getElementById("closePopup");
+
+    memoriesBtn.addEventListener("click", () => {
+      memorySection.style.display = "flex";
+      startSlideshow();
+      popupBackdrop.style.display = "flex";
+      if (music && music.paused) {
+        music.play().catch(() => {});
+      }
+    });
+
+    hugBtn.addEventListener("click", () => {
+      alert("🤍 Virtual hug delivered. Ab real wala baad mein milna padega. 😌");
+      if (music && music.paused) {
+        music.play().catch(() => {});
+      }
+    });
+
+    closePopup.addEventListener("click", () => {
+      popupBackdrop.style.display = "none";
+    });
+
+    popupBackdrop.addEventListener("click", (e) => {
+      if (e.target === popupBackdrop) {
+        popupBackdrop.style.display = "none";
+      }
+    });
+  </script>
+</body>
+</html>
+
