@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Happy Birthday Riya 🎉</title>
-  <style>
+<style>
     * {
       margin: 0;
       padding: 0;
@@ -16,9 +10,11 @@
       background: radial-gradient(circle at top, #ff9a9e, #fad0c4, #fbc2eb);
       min-height: 100vh;
       display: flex;
-      align-items: center;
       justify-content: center;
-      overflow: hidden;
+      align-items: flex-start;
+      padding: 40px 0;
+      overflow-y: auto;   /* scroll allowed */
+      overflow-x: hidden; /* horizontal scroll banned */
     }
 
     .heart {
@@ -62,6 +58,7 @@
       box-shadow: 0 24px 55px rgba(0, 0, 0, 0.28);
       color: #2b2b2b;
       text-align: center;
+      margin-bottom: 60px; /* leaves space for bottom */
     }
 
     .badge {
@@ -98,9 +95,6 @@
       margin-bottom: 14px;
     }
 
-    .hero-photo {
-      margin-bottom: 14px;
-    }
     .hero-photo img {
       width: 100%;
       max-height: 230px;
@@ -108,6 +102,7 @@
       border-radius: 22px;
       border: 3px solid rgba(255, 255, 255, 0.9);
       box-shadow: 0 16px 35px rgba(0, 0, 0, 0.35);
+      margin-bottom: 14px;
     }
 
     .message-box {
@@ -119,7 +114,7 @@
       line-height: 1.55;
       min-height: 130px;
       box-shadow: 0 10px 22px rgba(0, 0, 0, 0.15);
-      margin-bottom: 12px;
+      margin-bottom: 20px;
     }
 
     .message-label {
@@ -154,6 +149,7 @@
       display: none;
       flex-direction: column;
       gap: 8px;
+      margin-bottom: 20px;
     }
 
     .memory-title {
@@ -190,6 +186,7 @@
       justify-content: center;
       gap: 10px;
       flex-wrap: wrap;
+      margin-bottom: 10px;
     }
 
     button {
@@ -216,204 +213,11 @@
       color: #ff4b8b;
       border: 1px solid rgba(255, 255, 255, 0.95);
     }
-    .btn-ghost:hover {
-      transform: translateY(-1px);
-    }
 
     .footer-note {
-      margin-top: 10px;
+      margin-top: 20px;
       font-size: 11px;
       opacity: 0.7;
-    }
-
-    .popup-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.55);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 5;
-    }
-
-    .popup {
-      background: white;
-      border-radius: 22px;
-      padding: 20px 18px 16px;
-      max-width: 340px;
-      width: 88%;
-      text-align: center;
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
-      animation: popIn 0.35s ease-out;
-    }
-
-    @keyframes popIn {
-      from { transform: scale(0.7); opacity: 0; }
-      to   { transform: scale(1); opacity: 1; }
-    }
-
-    .popup h2 {
-      font-size: 20px;
-      margin-bottom: 6px;
-    }
-
-    .popup p {
-      font-size: 13px;
-      line-height: 1.5;
       margin-bottom: 10px;
     }
-  </style>
-</head>
-<body>
-
-  <audio id="bg-music" src="audioooo.mp3" autoplay loop></audio>
-
-  <div class="card">
-    <div class="badge">
-      <span>🎂</span>
-      <div>For my favourite drama queen</div>
-    </div>
-
-    <h1 class="title">Happy Birthday, Riya! 🎉</h1>
-    <p class="subtitle">Full Bollywood entry, just for you. 💗</p>
-
-    <div class="hero-photo">
-      <img src="riya-main.jpg" alt="Riya main photo">
-    </div>
-
-    <div class="message-box">
-      <div class="message-label">A special message just for you 💌</div>
-      <div id="typed-message"></div>
-      <span class="cursor">|</span>
-    </div>
-
-    <div class="memory-section" id="memorySection">
-      <div class="memory-title">Memories that make you impossible to forget 🎞️</div>
-      <div class="slideshow">
-        <img id="slide1" src="riya-1.jpg" class="active">
-        <img id="slide2" src="riya-2.jpg">
-        <img id="slide3" src="riya-3.jpg">
-      </div>
-    </div>
-
-    <div class="button-row">
-      <button class="btn-main" id="memoriesBtn">Play the memories ✨</button>
-      <button class="btn-ghost" id="hugBtn">Virtual hug 🤍</button>
-    </div>
-
-    <div class="footer-note">
-      Built with a little bit of code and a lot of 
-      <span>you + me madness</span> 💫
-    </div>
-  </div>
-
-  <div class="popup-backdrop" id="popupBackdrop">
-    <div class="popup">
-      <h2>One last thing 💖</h2>
-      <p>
-        I don’t know how a single picture can look<br>
-        so calm, so aesthetic, and so beautiful…<br>
-        but somehow you pulled it off effortlessly. 🥹✨
-      </p>
-      <button class="btn-main" id="closePopup">Okay, fine 😌💗</button>
-    </div>
-  </div>
-
-  <script>
-    const mainMessage = `Dear Riya, Happy Birthday us insan ko jo mujhe tab bhi hasa deti hai jab main poore dil se decide kar leta hoon ki 'aaj toh main serious rahunga' 😭😂 — jis din se hum ek-dusre ko jaante hain, us din se tumne meri life mein itni khushi, itna maza, itna chaos aur itna entertainment daal diya hai ki sach bolun toh ek bhi din bore hone ka mauka hi nahi mila. Agar mujhe pata hota ki tumse milne ke baad meri life itni entertaining ho jaayegi, toh chalna–phirna seekhte hi main tumhe dhundhne nikal padta 😌🔥. Aur haan, tumhara ex mera dost hai, lekin reality ye hai ki uske haath mein ekdam festival tha aur usne use low-battery torch samajh liya 😭🔥. Uske dimaag ki loading mere purane phone se bhi zyada slow thi — matlab kaun aisi fun, crazy, sweet aur entertaining ladki ko lose kar deta hai? Ye toh uski life ka biggest L hai, aur woh uska poora haq banta hai 😂. Idhar tum ho, jo mujhe roz aise tease karti ho jaise ye tumhari full-time naukri ho, attitude aur sarcasm aise phenkti ho jaise tumhe hourly payment milti ho, aur main yahan zero-salary wala employee ban kar sab jhel raha hoon 😩💀😂. Par saari bakchodi, mazaak aur roasting ke beech, dil se chahta hoon ki ye saal tumhe woh khushiyan de jo ruk jaayein, woh log de jo beech raste mein chhod ke na bhaag jaayein, aur woh moments de jo tumhe feel karayein ki tum genuinely important ho, valued ho, aur kisi ki life ka best part ho. Tum deserve karti ho koi aisa jo sunta ho, samajhta ho, jo tumhe kabhi bhi kam feel na karaye — koi jo tumhari duniya ko heavy nahi, light banaye. Aur haan, hamare saare chaos aur teasing ke beech ek baat yaad rakhna… tum bina effort ke bhi kisi ki life bright bana sakti ho. Aur agar tumne kabhi mere bina cake khaya… toh main complaint likh kar, tumhare ghar pahunch kar, poora cake utha ke le aaunga — full confidence ke saath. 🎂😤😂💗`;
-
-    const typedEl = document.getElementById("typed-message");
-    const cursorEl = document.querySelector(".cursor");
-    let i = 0;
-
-    function typeLetter() {
-      if (i < mainMessage.length) {
-        typedEl.textContent += mainMessage.charAt(i);
-        i++;
-        setTimeout(typeLetter, 30);
-      } else {
-        cursorEl.style.display = "none";
-      }
-    }
-
-    function createHeart() {
-      const heart = document.createElement("div");
-      heart.className = "heart";
-      const size = Math.random() * 14 + 10;
-      heart.style.width = size + "px";
-      heart.style.height = size + "px";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.bottom = "-40px";
-      heart.style.background = ["#ff4b8b", "#ffb347", "#ffffff", "#fbc2eb"][Math.floor(Math.random() * 4)];
-      heart.style.animationDuration = 6 + Math.random() * 4 + "s";
-      document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 11000);
-    }
-
-    function startHearts() {
-      setInterval(createHeart, 700);
-    }
-
-    const music = document.getElementById("bg-music");
-
-    window.addEventListener("load", () => {
-      typeLetter();
-      startHearts();
-      if (music) {
-        music.volume = 0.6;
-        music.play().catch(() => {});
-      }
-    });
-
-    const memorySection = document.getElementById("memorySection");
-    const slides = [
-      document.getElementById("slide1"),
-      document.getElementById("slide2"),
-      document.getElementById("slide3")
-    ];
-    let currentSlide = 0;
-    let slideInterval = null;
-
-    function startSlideshow() {
-      if (slideInterval) return;
-      slideInterval = setInterval(() => {
-        slides[currentSlide].classList.remove("active");
-        currentSlide = (currentSlide + 1) % slides.length;
-        slides[currentSlide].classList.add("active");
-      }, 2000);
-    }
-
-    const memoriesBtn = document.getElementById("memoriesBtn");
-    const hugBtn = document.getElementById("hugBtn");
-    const popupBackdrop = document.getElementById("popupBackdrop");
-    const closePopup = document.getElementById("closePopup");
-
-    memoriesBtn.addEventListener("click", () => {
-      memorySection.style.display = "flex";
-      startSlideshow();
-      popupBackdrop.style.display = "flex";
-      if (music && music.paused) {
-        music.play().catch(() => {});
-      }
-    });
-
-    hugBtn.addEventListener("click", () => {
-      alert("🤍 Virtual hug delivered. Ab real wala baad mein milna padega. 😌");
-      if (music && music.paused) {
-        music.play().catch(() => {});
-      }
-    });
-
-    closePopup.addEventListener("click", () => {
-      popupBackdrop.style.display = "none";
-    });
-
-    popupBackdrop.addEventListener("click", (e) => {
-      if (e.target === popupBackdrop) {
-        popupBackdrop.style.display = "none";
-      }
-    });
-  </script>
-</body>
-</html>
-
+</style>
