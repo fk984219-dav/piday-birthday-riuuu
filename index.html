@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Happy Birthday Riya 🎂</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Riya 🎉</title>
   <style>
     * {
       margin: 0;
@@ -16,14 +16,16 @@
       background: radial-gradient(circle at top, #ff9a9e, #fad0c4, #fbc2eb);
       min-height: 100vh;
       display: flex;
+      align-items: center;
       justify-content: center;
-      align-items: flex-start;
-      padding: 40px 0;
-      overflow-y: auto;
-      overflow-x: hidden;
+
+      /* SCROLL FIX */
+      overflow-x: hidden;   /* side scroll off */
+      overflow-y: auto;     /* vertical scroll ON */
+      padding: 20px 10px;   /* thoda space upar–neeche */
     }
 
-    /* FLOATING HEARTS */
+    /* Floating hearts */
     .heart {
       position: fixed;
       width: 18px;
@@ -47,12 +49,17 @@
     .heart::after  { top: -9px; left: 0; }
 
     @keyframes floatHeart {
-      0% { transform: translateY(0) rotate(45deg) scale(0.8); opacity: 0; }
+      0% {
+        transform: translateY(0) rotate(45deg) scale(0.8);
+        opacity: 0;
+      }
       10% { opacity: 1; }
-      100% { transform: translateY(-110vh) rotate(45deg) scale(1.3); opacity: 0; }
+      100% {
+        transform: translateY(-110vh) rotate(45deg) scale(1.3);
+        opacity: 0;
+      }
     }
 
-    /* MAIN CARD */
     .card {
       position: relative;
       z-index: 1;
@@ -66,7 +73,7 @@
       box-shadow: 0 24px 55px rgba(0, 0, 0, 0.28);
       color: #2b2b2b;
       text-align: center;
-      margin-bottom: 60px;
+      margin: 20px 0 40px; /* thoda extra space for scroll */
     }
 
     .badge {
@@ -89,7 +96,6 @@
       -webkit-background-clip: text;
       color: transparent;
       animation: gradientMove 4s ease-in-out infinite;
-      background-size: 200% 200%;
     }
 
     @keyframes gradientMove {
@@ -104,6 +110,9 @@
       margin-bottom: 14px;
     }
 
+    .hero-photo {
+      margin-bottom: 14px;
+    }
     .hero-photo img {
       width: 100%;
       max-height: 230px;
@@ -111,11 +120,10 @@
       border-radius: 22px;
       border: 3px solid rgba(255, 255, 255, 0.9);
       box-shadow: 0 16px 35px rgba(0, 0, 0, 0.35);
-      margin-bottom: 14px;
     }
 
-    /* MESSAGE BOX */
     .message-box {
+      position: relative;
       background: rgba(255, 255, 255, 0.97);
       border-radius: 18px;
       padding: 16px 14px 14px;
@@ -124,12 +132,13 @@
       line-height: 1.55;
       min-height: 130px;
       box-shadow: 0 10px 22px rgba(0, 0, 0, 0.15);
-      margin-bottom: 20px;
+      margin-bottom: 12px;
     }
 
     .message-label {
       font-size: 11px;
       text-transform: uppercase;
+      letter-spacing: 0.08em;
       opacity: 0.6;
       margin-bottom: 6px;
     }
@@ -150,7 +159,7 @@
       50%, 100% { opacity: 0; }
     }
 
-    /* MEMORY SLIDESHOW */
+    /* Memory slideshow */
     .memory-section {
       margin-top: 10px;
       background: rgba(255, 255, 255, 0.9);
@@ -160,12 +169,12 @@
       display: none;
       flex-direction: column;
       gap: 8px;
-      margin-bottom: 20px;
     }
 
     .memory-title {
       font-size: 12px;
       text-transform: uppercase;
+      letter-spacing: 0.1em;
       opacity: 0.7;
     }
 
@@ -175,7 +184,6 @@
       overflow: hidden;
       border-radius: 16px;
       height: 210px;
-      margin-top: 6px;
     }
 
     .slideshow img {
@@ -192,14 +200,12 @@
       opacity: 1;
     }
 
-    /* BUTTONS */
     .button-row {
       margin-top: 10px;
       display: flex;
       justify-content: center;
       gap: 10px;
       flex-wrap: wrap;
-      margin-bottom: 10px;
     }
 
     button {
@@ -208,7 +214,7 @@
       border-radius: 999px;
       font-size: 13px;
       cursor: pointer;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s;
     }
 
     .btn-main {
@@ -216,125 +222,238 @@
       color: white;
       box-shadow: 0 8px 18px rgba(255, 75, 139, 0.45);
     }
+    .btn-main:hover {
+      transform: translateY(-1px) scale(1.03);
+      box-shadow: 0 10px 22px rgba(255, 75, 139, 0.6);
+    }
 
     .btn-ghost {
       background: rgba(255, 255, 255, 0.9);
       color: #ff4b8b;
       border: 1px solid rgba(255, 255, 255, 0.95);
     }
-
-    /* AUDIO */
-    .audio-card {
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 18px;
-      padding: 12px 12px 14px;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.12);
-      margin-top: 8px;
+    .btn-ghost:hover {
+      transform: translateY(-1px);
     }
 
-    audio {
-      width: 100%;
+    .footer-note {
+      margin-top: 10px;
+      font-size: 11px;
+      opacity: 0.7;
+    }
+    .footer-note span {
+      font-weight: 600;
+    }
+
+    /* Final popup */
+    .popup-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 5;
+    }
+
+    .popup {
+      background: white;
+      border-radius: 22px;
+      padding: 20px 18px 16px;
+      max-width: 340px;
+      width: 88%;
+      text-align: center;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+      animation: popIn 0.35s ease-out;
+    }
+
+    @keyframes popIn {
+      from { transform: scale(0.7); opacity: 0; }
+      to   { transform: scale(1); opacity: 1; }
+    }
+
+    .popup h2 {
+      font-size: 20px;
+      margin-bottom: 6px;
+    }
+
+    .popup p {
+      font-size: 13px;
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+
+    .popup button {
+      margin-top: 6px;
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        padding: 20px 16px 18px;
+        border-radius: 22px;
+      }
+      .title { font-size: 23px; }
     }
   </style>
 </head>
 <body>
-  <div class="card">
-    <div class="badge">🎂 Birthday Special • Just for you</div>
-    <h1 class="title">Happy Birthday, Riya 💖</h1>
-    <p class="subtitle">Scroll slowly, play the song and read it like a small secret letter.</p>
 
+  <!-- Background music -->
+  <audio id="bg-music" src="audioooo.mp3" autoplay loop></audio>
+
+  <div class="card">
+    <div class="badge">
+      <span>🎂</span>
+      <div>For my favourite drama queen</div>
+    </div>
+
+    <h1 class="title">Happy Birthday, Riya! 🎉</h1>
+    <p class="subtitle">Full Bollywood entry, just for you. 💗</p>
+
+    <!-- HERO PHOTO -->
     <div class="hero-photo">
       <img src="riya-main.jpg" alt="Riya main photo">
     </div>
 
     <div class="message-box">
-      <div class="message-label">A small note for you</div>
+      <div class="message-label">A special message just for you 💌</div>
       <div id="typed-message"></div><span class="cursor">|</span>
     </div>
 
-    <div class="memory-section" id="memories">
-      <div class="memory-title">Some of my favourite memories</div>
+    <!-- Hidden memory slideshow -->
+    <div class="memory-section" id="memorySection">
+      <div class="memory-title">Memories that make you impossible to forget 🎞️</div>
       <div class="slideshow">
-        <img src="riya-1.jpg" class="slide active">
-        <img src="riya-2.jpg" class="slide">
-        <img src="riya-3.jpg" class="slide">
+        <img id="slide1" src="riya-1.jpg" class="active" alt="Riya photo 1">
+        <img id="slide2" src="riya-2.jpg" alt="Riya photo 2">
+        <img id="slide3" src="riya-3.jpg" alt="Riya photo 3">
       </div>
     </div>
 
     <div class="button-row">
-      <button class="btn-main" id="show-memories">Show memories ✨</button>
-      <button class="btn-ghost" id="replay-message">Replay message 🔁</button>
+      <button class="btn-main" id="memoriesBtn">Play the memories ✨</button>
+      <button class="btn-ghost" id="hugBtn">Virtual hug 🤍</button>
     </div>
 
-    <div class="audio-card">
-      <p>Play this while reading again 🎧</p>
-      <audio controls autoplay loop>
-        <source src="audioooo.mp3" type="audio/mpeg">
-      </audio>
+    <div class="footer-note">
+      Built with a little bit of code and a lot of <span>you + me madness</span> 💫
+    </div>
+  </div>
+
+  <!-- Final emotional popup -->
+  <div class="popup-backdrop" id="popupBackdrop">
+    <div class="popup">
+      <h2>One last thing 💖</h2>
+      <p>
+        Chahe kitna bhi mazaak aur roasting ho,<br>
+        tu literally meri life ka favourite part hai.<br>
+        Thanks for being you, Riya. 🥹✨
+      </p>
+      <button class="btn-main" id="closePopup">Okay, fine 😌💗</button>
     </div>
   </div>
 
   <script>
-    /* TYPING EFFECT */
-    const text = `On this day, a very special person was born (yes, you 😌).
+    // MAIN MESSAGE
+    const mainMessage = `Dear Riya, Happy Birthday us insan ko jo mujhe tab bhi hasa deti hai jab main poore dil se decide kar leta hoon ki 'aaj toh main serious rahunga' 😭😂 — jis din se hum ek-dusre ko jaante hain, us din se tumne meri life mein itni khushi, itna maza, itna chaos aur itna entertainment daal diya hai ki sach bolun toh ek bhi din bore hone ka mauka hi nahi mila. Agar mujhe pata hota ki tumse milne ke baad meri life itni entertaining ho jaayegi, toh chalna–phirna seekhte hi main tumhe dhundhne nikal padta 😌🔥. Aur haan, tumhara ex mera dost hai, lekin reality ye hai ki uske haath mein ekdam festival tha aur usne use low-battery torch samajh liya 😭🔥. Uske dimaag ki loading mere purane phone se bhi zyada slow thi — matlab kaun aisi fun, crazy, sweet aur entertaining ladki ko lose kar deta hai? Ye toh uski life ka biggest L hai, aur woh uska poora haq banta hai 😂. Idhar tum ho, jo mujhe roz aise tease karti ho jaise ye tumhari full-time naukri ho, attitude aur sarcasm aise phenkti ho jaise tumhe hourly payment milti ho, aur main yahan zero-salary wala employee ban kar sab jhel raha hoon 😩💀😂. Par saari bakchodi, mazaak aur roasting ke beech, dil se chahta hoon ki ye saal tumhe woh khushiyan de jo ruk jaayein, woh log de jo beech raste mein chhod ke na bhaag jaayein, aur woh moments de jo tumhe feel karayein ki tum genuinely important ho, valued ho, aur kisi ki life ka best part ho. Tum deserve karti ho koi aisa jo sunta ho, samajhta ho, jo tumhe kabhi bhi kam feel na karaye — koi jo tumhari duniya ko heavy nahi, light banaye. Aur haan, hamare saare chaos aur teasing ke beech ek baat yaad rakhna… tum bina effort ke bhi kisi ki life bright bana sakti ho. Aur agar tumne kabhi mere bina cake khaya… toh main complaint likh kar, tumhare ghar pahunch kar, poora cake utha ke le aaunga — full confidence ke saath. 🎂😤😂💗`;
 
-Thank you for being you – for your smile, your drama, your nonsense talks 
-and the way you make everything feel a little lighter.
-
-I hope this year gives you stupid amounts of happiness, random surprises 
-and a lot of reasons to smile.
-
-You deserve all of it. Happy birthday, Riya. 🥳💗`;
-
-    const target = document.getElementById("typed-message");
+    const typedEl = document.getElementById("typed-message");
+    const cursorEl = document.querySelector(".cursor");
     let i = 0;
 
-    function type() {
-      if (i <= text.length) {
-        target.textContent = text.slice(0, i);
+    function typeLetter() {
+      if (i < mainMessage.length) {
+        typedEl.textContent += mainMessage.charAt(i);
         i++;
-        setTimeout(type, 35);
+        setTimeout(typeLetter, 30);
+      } else {
+        cursorEl.style.display = "none";
       }
     }
-    type();
 
-    /* SLIDESHOW */
-    const memories = document.getElementById("memories");
-    const slides = document.querySelectorAll(".slide");
-    let slideIndex = 0;
-
-    function showSlide(idx) {
-      slides.forEach((s, i) => s.classList.toggle("active", i === idx));
-    }
-
-    setInterval(() => {
-      if (memories.style.display === "flex") {
-        slideIndex = (slideIndex + 1) % slides.length;
-        showSlide(slideIndex);
-      }
-    }, 2500);
-
-    document.getElementById("show-memories").addEventListener("click", () => {
-      memories.style.display = "flex";
-      memories.scrollIntoView({ behavior: "smooth" });
-    });
-
-    document.getElementById("replay-message").addEventListener("click", () => {
-      i = 0;
-      target.textContent = "";
-      type();
-    });
-
-    /* FLOATING HEARTS */
+    // Hearts
     function createHeart() {
       const heart = document.createElement("div");
       heart.className = "heart";
+      const size = Math.random() * 14 + 10;
+      heart.style.width = size + "px";
+      heart.style.height = size + "px";
       heart.style.left = Math.random() * 100 + "vw";
+      heart.style.bottom = "-40px";
+      heart.style.background = ["#ff4b8b", "#ffb347", "#ffffff", "#fbc2eb"][Math.floor(Math.random() * 4)];
       heart.style.animationDuration = 6 + Math.random() * 4 + "s";
       document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 10000);
+      setTimeout(() => heart.remove(), 11000);
     }
-    setInterval(createHeart, 900);
+
+    function startHearts() {
+      setInterval(createHeart, 700);
+    }
+
+    const music = document.getElementById("bg-music");
+
+    window.addEventListener("load", () => {
+      typeLetter();
+      startHearts();
+      if (music) {
+        music.volume = 0.6;
+        music.play().catch(() => {
+          // will start after user tap if browser blocks autoplay
+        });
+      }
+    });
+
+    // Slideshow logic
+    const memorySection = document.getElementById("memorySection");
+    const slides = [
+      document.getElementById("slide1"),
+      document.getElementById("slide2"),
+      document.getElementById("slide3")
+    ];
+    let currentSlide = 0;
+    let slideInterval = null;
+
+    function startSlideshow() {
+      if (slideInterval) return;
+      slideInterval = setInterval(() => {
+        slides[currentSlide].classList.remove("active");
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add("active");
+      }, 2000);
+    }
+
+    // Buttons and popup
+    const memoriesBtn = document.getElementById("memoriesBtn");
+    const hugBtn = document.getElementById("hugBtn");
+    const popupBackdrop = document.getElementById("popupBackdrop");
+    const closePopup = document.getElementById("closePopup");
+
+    memoriesBtn.addEventListener("click", () => {
+      memorySection.style.display = "flex";
+      startSlideshow();
+      popupBackdrop.style.display = "flex";
+      if (music && music.paused) {
+        music.play().catch(() => {});
+      }
+    });
+
+    hugBtn.addEventListener("click", () => {
+      alert("🤍 Virtual hug delivered. Ab real wala baad mein milna padega. 😌");
+      if (music && music.paused) {
+        music.play().catch(() => {});
+      }
+    });
+
+    closePopup.addEventListener("click", () => {
+      popupBackdrop.style.display = "none";
+    });
+
+    popupBackdrop.addEventListener("click", (e) => {
+      if (e.target === popupBackdrop) {
+        popupBackdrop.style.display = "none";
+      }
+    });
   </script>
 </body>
 </html>
+
